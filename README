@@ -1,0 +1,81 @@
+########
+1. ABOUT
+########
+
+This plugin enables the Gnome Rhythmbox music player (http://projects.gnome.org/rhythmbox) to output information of the currently playing track to any type of display supported by the LCDproc driver (http://lcdproc.org). It is based on the "Rhythmbox LCDproc plugin" (http://locoudev.0fees.net) by Loic Andrieu, and I extended it to -- among other things -- make it better handle radio streams, be more robust to disconnections from the LCDproc service and be compatible with the new Rhythmbox API (as of version 0.13.3).
+
+###########
+2. FEATURES
+###########
+
+ * Displays Title, Artist, Album, current and total time and the track number of the currently playing track, if set.
+ * Works for tracks from the local music database as well as for last.fm and regular radio streams. Others have not been tested.
+ * Scrolls text that exceeds the display width in two selectable modes: Bouncing or scroll-through.
+
+###############
+3. REQUIREMENTS
+###############
+
+ * Rhythmbox >=0.13.3 (http://projects.gnome.org/rhythmbox) For pre-0.13.3 Rhythmboxes, try the version in the folder "lcdproc-plugin-pre-0.13.3"
+ * LCDproc (http://lcdproc.org, Arch Linux: lcdproc from AUR http://aur.archlinux.org/packages.php?ID=8344)
+ * Python OOP Wrapper Library for LCDproc Telnet API version 0.02 (http://github.com/jingleman/lcdproc)
+
+###############
+4. INSTALLATION
+###############
+
+Make sure the software under 2. is installed.
+
+Check out the git repository:
+
+$ git clone git@github.com:mikerofone/lcdproc-rhythmbox.git
+
+Either copy (or symlink) the lcdproc-rhythmbox folder to your Rhythmbox plugins folder:
+
+1.$ cd lcdproc-rhythmbox
+2a$ cp -R lcdproc-plugin ~/.local/share/rhythmbox/plugins/
+ or
+2b$ ln -s `pwd` ~/.local/share/rhythmbox/plugins/lcdproc-plugin
+
+Start Rhythmbox, goto Edit->Plugins and tick/activate "LCDproc plugin". Your display should now display the information on the current track or a notice that it is not playing currently.
+
+################
+5. CONFIGURATION
+################
+
+Currently, there is not too much to configure, and the things that can/need to be configured must be set in the source-code (lcdprog-plugin/lcdproc-plugin.py). The most important parameter is the width of your display (in characters per row), which defaults to 20. You can also decide between two scrolling modes (bounce or scroll-through) for text that exceeds the screen width, and the separation string used in scroll-through scrolling mode. These are set with a gconf-property, but the configuration dialogue is broken and must be fixed.
+
+##################
+6. TROUBLESHOOTING
+##################
+
+If your display does not change at all, make sure that LCDproc is really running.
+
+Launching Rhythmbox from the command line with the switch -D lcdproc-plugin enabled debug output for the plugin. It will print some status messages and also stack traces in case something should blow.
+
+##########
+7. CONTACT
+##########
+
+Bugreports, feature requests and any other kind of feedback are best reported via the GitHub system. In case you want to drop me an email, write to mike_rofone@imail.de.
+
+###########
+8. COPYLEFT
+###########
+
+Copyright (c) 2011 Nikolai Knopp <mike_rofone at imail.de>
+
+This plugin is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+(See COPYING for the licence).
+
