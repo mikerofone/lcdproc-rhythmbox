@@ -30,12 +30,14 @@ Check out the git repository:
 
 $ git clone git@github.com:mikerofone/lcdproc-rhythmbox.git
 
-Either copy (or symlink) the lcdproc-rhythmbox folder to your Rhythmbox plugins folder:
+Either copy the lcdproc-rhythmbox folder to your Rhythmbox plugins folder:
 
-1.$ cd lcdproc-rhythmbox
-2a$ cp -R lcdproc-plugin ~/.local/share/rhythmbox/plugins/
- or
-2b$ ln -s `pwd` ~/.local/share/rhythmbox/plugins/lcdproc-plugin
+$ cd lcdproc-rhythmbox
+$ cp -R lcdproc-plugin ~/.local/share/rhythmbox/plugins/
+
+or symlink it directly to the folder in your local git clone:
+$ cd lcdproc-rhythmbox/lcdproc-plugin
+$ ln -s `pwd` ~/.local/share/rhythmbox/plugins/lcdproc-plugin
 
 Start Rhythmbox, goto Edit->Plugins and tick/activate "LCDproc plugin". Your display should now display the information on the current track or a notice that it is not playing currently.
 
