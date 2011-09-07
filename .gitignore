@@ -1,0 +1,4 @@
+# ignore compiled python classes
+*.pyc
+# ignore backups
+*~

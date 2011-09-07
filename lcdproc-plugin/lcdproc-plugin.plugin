@@ -1,0 +1,9 @@
+[Plugin]
+Loader=python
+Module=lcdproc-plugin
+IAge=2
+Name=LCDproc plugin
+Description=LCDproc support for Rhythmbox
+Authors=Loic Andrieu <locoustic@gmail.com>, Nikolai Knopp <mike_rofone@imail.de>
+Copyright=Copyright © 2010-2011 Loic Andrieu, Nikolai Knopp
+Website=http://locoudev.0fees.net/
