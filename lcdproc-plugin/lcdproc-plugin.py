@@ -281,8 +281,8 @@ class LCDProcPlugin (GObject.Object, Peas.Activatable):
             self.running = False
             self.inited = False
             return
-        self.pec_id = self.shell.get_player().connect('playing-song-changed', self.change_callback)
-        self.pspc_id = self.shell.get_player().connect ('playing-song-property-changed', self.playing_song_property_changed)
+        self.pec_id = self.shell.props.shell_player.connect('playing-song-changed', self.change_callback)
+        self.pspc_id = self.shell.props.shell_player.connect ('playing-song-property-changed', self.playing_song_property_changed)
         self.inited = True
         print "Connected to LCDProc, loading plugin"
 
@@ -314,9 +314,9 @@ class LCDProcPlugin (GObject.Object, Peas.Activatable):
         self.scrolling.config([self.title_widget, self.album_widget, self.artist_widget, self.time_widget])
         self.scrolling.start()
         
-        self.pec_idd = self.shell.get_player().connect('elapsed-changed', self.time_callback)
-        self.change_callback(self.shell.get_player(),self.shell.get_player().get_playing_entry())
-#        self.time_callback(self.shell.get_player(),-1)
+        self.pec_idd = self.shell.props.shell_player.connect('elapsed-changed', self.time_callback)
+        self.change_callback(self.shell.props.shell_player,self.shell.props.shell_player.get_playing_entry())
+#        self.time_callback(self.shell.props.shell_player,-1)
         print "(Re-)Connected to LCDProc"
         return True
 
@@ -324,7 +324,7 @@ class LCDProcPlugin (GObject.Object, Peas.Activatable):
         self.disconnect()
         if self.inited:
             #plugin was running at some point
-            self.shell.get_player().disconnect(self.pec_id)
+            self.shell.props.shell_player.disconnect(self.pec_id)
             del self.pec_id
             del self.pspc_id
         del self.shell
@@ -337,7 +337,7 @@ class LCDProcPlugin (GObject.Object, Peas.Activatable):
         
         self.running = False;
         self.scrolling.stop_scrolling()
-        self.shell.get_player().disconnect(self.pec_idd)
+        self.shell.props.shell_player.disconnect(self.pec_idd)
         del self.pec_idd
         del self.scrolling
         del self.title_widget
